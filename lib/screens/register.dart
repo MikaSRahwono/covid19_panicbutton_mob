@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import '../cookie_request.dart';
 import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
