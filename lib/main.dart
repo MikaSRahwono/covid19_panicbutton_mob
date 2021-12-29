@@ -1,3 +1,4 @@
+import 'package:covid19_panicbutton_mob/widgets/quiz.dart';
 import 'package:flutter/material.dart';
 import './cookie_request.dart';
 import 'package:provider/provider.dart';
@@ -25,11 +26,9 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.lightBlue,
             elevatedButtonTheme: ElevatedButtonThemeData(
                 style: ElevatedButton.styleFrom(
-                  primary: Color.fromRGBO(110, 110, 220, 1),
-                  fixedSize: const Size(160, 100),
-                )
-            )
-        ),
+              primary: Color.fromRGBO(110, 110, 220, 1),
+              fixedSize: const Size(160, 100),
+            ))),
         home: const MyHomePage(title: 'Covid-19 Panic Button'),
       ),
     );
@@ -62,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Padding(
                 padding: const EdgeInsets.all(40),
-                child: ElevatedButton (
+                child: ElevatedButton(
                     child: const Text(
                       'P',
                       textAlign: TextAlign.center,
@@ -72,9 +71,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         fontSize: 50,
                       ),
                     ),
-                    onPressed: () {}
-                )
-            ),
+                    onPressed: () {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) {
+                        return MyQuizApp();
+                      }));
+                    })),
             Text(
               'Press the button to continue',
               style: Theme.of(context).textTheme.bodyText1,
