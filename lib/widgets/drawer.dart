@@ -4,6 +4,9 @@ import '../screens/register.dart';
 import '../screens/logout.dart';
 import '../cookie_request.dart';
 import 'package:provider/provider.dart';
+import '../motivasi/motivasi.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 class MainDrawer extends StatelessWidget {
   @override
@@ -12,12 +15,19 @@ class MainDrawer extends StatelessWidget {
     return Drawer(
       child: Container(
         padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-        color: Color.fromRGBO(128, 128, 255, 1),
+        color: Color(0xff828cf6),
         child: ListView(
           children: <Widget> [
             const SizedBox(height: 24),
-            const Center(
-                child: Text("Drawer", style: TextStyle(fontSize: 25))),
+            Center(
+              child: Text("Menu", 
+                style: GoogleFonts.poppins(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xff181818)
+                )
+              )
+            ),
             const SizedBox(height: 48),
             buildListTile("Login", !isLoggedIn, () {
               Navigator.pop(context);
@@ -47,8 +57,11 @@ class MainDrawer extends StatelessWidget {
               Navigator.pop(context);
             }),
             const SizedBox(height: 24),
-            buildListTile("Dummy2", true, () {
+            buildListTile("Motivasi", true, () {
               Navigator.pop(context);
+              Navigator.push(context, 
+                MaterialPageRoute(builder: (context) => const MotivasiApp())
+              );
             }),
           ]
         )
