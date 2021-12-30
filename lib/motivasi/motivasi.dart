@@ -208,7 +208,7 @@ class _AddMotivationPage extends State<AddMotivationPage> {
           // }
           if (messageController.text.isNotEmpty) {
             message = messageController.text;
-            bool response = await postJson.postData(message);
+            await postJson.postData(message);
           }
           
           Navigator.pop(context);

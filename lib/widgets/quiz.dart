@@ -2,8 +2,6 @@ import 'package:covid19_panicbutton_mob/cookie_request.dart';
 import 'package:covid19_panicbutton_mob/widgets/lulus.dart';
 import 'package:covid19_panicbutton_mob/widgets/tidak_lulus.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class MyQuizApp extends StatelessWidget {
   @override
