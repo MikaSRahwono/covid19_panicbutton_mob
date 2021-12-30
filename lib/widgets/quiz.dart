@@ -1,6 +1,9 @@
+import 'package:covid19_panicbutton_mob/cookie_request.dart';
 import 'package:covid19_panicbutton_mob/widgets/lulus.dart';
 import 'package:covid19_panicbutton_mob/widgets/tidak_lulus.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class MyQuizApp extends StatelessWidget {
   @override
@@ -113,6 +116,55 @@ class _QuizAppState extends State<QuizApp> {
     false,
     false,
   ];
+
+  String selectedProv = "Aceh";
+  List<String> provs = [
+    "Aceh",
+    "Bali",
+    "Bangka Belitung",
+    "Banten",
+    "Bengkulu",
+    "DKI Jakarta",
+    "Daerah Istimewa Yogyakarta",
+    "Gorontalo",
+    "Jambi",
+    "Jawa Barat",
+    "Jawa Tengah",
+    "Jawa Timur",
+    "Kalimantan Barat",
+    "Kalimantan Selatan",
+    "Kalimantan Tengah",
+    "Kalimantan Timur",
+    "Kalimantan Utara",
+    "Kepulauan Riau",
+    "Lampung",
+    "Maluku",
+    "Maluku Utara",
+    "Nusa Tenggara Barat",
+    "Nusa Tenggara Timur",
+    "Papua",
+    "Papua Barat",
+    "Riau",
+    "Sulawesi Barat",
+    "Sulawesi Selatan",
+    "Sulawesi Tengah",
+    "Sulawesi Tenggara",
+    "Sulawesi Utara",
+    "Sumatera Barat",
+    "Sumatera Selatan",
+    "Sumatera Utara",
+  ];
+
+  List<DropdownMenuItem> generateItems(List<String> provs) {
+    List<DropdownMenuItem> items = [];
+    for (var item in provs) {
+      items.add(DropdownMenuItem(
+        child: Text(item),
+        value: item,
+      ));
+    }
+    return items;
+  }
 
   setup() {
     options = [
@@ -414,6 +466,36 @@ class _QuizAppState extends State<QuizApp> {
               ],
             ),
           )),
+      Container(
+          margin: const EdgeInsets.all(10),
+          width: double.infinity,
+          child: Theme(
+            data: ThemeData(
+              unselectedWidgetColor: Colors.white,
+              canvasColor: col,
+            ),
+            child: Column(
+              children: [
+                DropdownButton<String>(
+                  value: selectedProv,
+                  style: TextStyle(color: Colors.white),
+                  items: provs.map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(
+                        value,
+                      ),
+                    );
+                  }).toList(),
+                  onChanged: (item) {
+                    setState(() {
+                      selectedProv = item!;
+                    });
+                  },
+                )
+              ],
+            ),
+          )),
     ];
 
     op = options[index];
@@ -459,9 +541,20 @@ class _QuizAppState extends State<QuizApp> {
                   ElevatedButton(
                       onPressed: () {
                         index++;
+                        print(nama.text);
                         if (index == options.length) {
                           int sum =
                               val.reduce((value, element) => value + element);
+                          CookieRequest quizClient = new CookieRequest();
+                          quizClient.post(
+                              'https://covid19-panic-button.herokuapp.com/quiz/mobile',
+                              <String, String>{
+                                'nama': nama.text,
+                                'prov': selectedProv,
+                                'isCovid': sum.toString()
+                              });
+
+                          print(selectedProv);
                           if (sum >= 6) {
                             Navigator.pushReplacement(context,
                                 MaterialPageRoute(builder: (context) {
