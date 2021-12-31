@@ -26,11 +26,35 @@ class HttpService {
 // 127.0.0.1:8000/data-covid/json
 
 class HttpServiceDjango {
-  Future<List<DataIndonesia>> getPosts() async {
-    var url = Uri.parse("http://127.0.0.1:8000/data-covid/json");
-    final response = await http.get(url);
-    var data = jsonDecode(response.body);
+  Future getPosts() async {
+    final url = "https://covid19-panic-button.herokuapp.com/data-covid/json";
 
-    return data;
+    print("masuk httpservice");
+    final response = await http.get(Uri.parse(url), headers: {
+      "Accept": "application/json",
+      "Access-Control_Allow_Origin": "*"
+    });
+    print("response" + response.body);
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      // List<dynamic> body = jsonDecode(response.body);
+
+      // List<DataIndonesia> dataIndonesia =
+      //     body.map((dynamic item) => DataIndonesia.fromJson(item)).toList();
+
+      print("lele");
+      Iterable it = jsonDecode(response.body);
+      List<DataIndonesia> notes =
+          it.map((e) => DataIndonesia.fromJson(e)).toList();
+      print(notes);
+      return notes;
+      // print("dataIndonesia");
+      // return dataIndonesia;
+    } else {
+      throw Exception("Cant get Posts.");
+    }
+    // var data = jsonDecode(response.body);
+    // print("masoook" + data);
+    // return data;
   }
 }

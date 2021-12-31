@@ -53,7 +53,8 @@ class _DataCovidPageState extends State<DataCovidPage> {
   var provinsiSaatIni;
   TextEditingController controller = TextEditingController();
 
-  Future<String> getIndex0() async {
+  getIndex0() async {
+    print("masook asink");
     datasDjango = await httpServiceDjango.getPosts();
 
     for (var i = 0; i < 1; i++) {
@@ -66,14 +67,15 @@ class _DataCovidPageState extends State<DataCovidPage> {
 
   @override
   void initState() {
+    print("masuk init");
     getIndex0();
-    fetchDataDjango("");
+    fetchDataDjango(provinsiSaatIni);
     super.initState();
   }
 
   fetchDataDjango(String search) async {
     datas = await httpService.getPosts();
-    print("masukkk 1");
+    print("masukkk fetchdatadjango");
     print(search);
     datas.forEach((element) {
       print(element.provinsi);
