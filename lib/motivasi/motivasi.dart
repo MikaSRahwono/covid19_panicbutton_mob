@@ -146,6 +146,10 @@ class _AddMotivationPage extends State<AddMotivationPage> {
   String message = '';
   NoteJson postJson = NoteJson();
 
+  void clearText() {
+    messageController.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -158,7 +162,9 @@ class _AddMotivationPage extends State<AddMotivationPage> {
             child: IconButton(
               icon: const Icon(Icons.delete),
               tooltip: "Clear",
-              onPressed: () {}
+              onPressed: () {
+                clearText();
+              }
             )
           ),
         ]
