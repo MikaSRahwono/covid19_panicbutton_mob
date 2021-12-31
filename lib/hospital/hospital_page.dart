@@ -11,14 +11,11 @@ class PlacesPage extends StatefulWidget {
 }
 
 class Placestate extends State<PlacesPage> {
-  String? _currentPlaceId;
 
   @override
   Widget build(BuildContext context) {
 
       // onItemTapped= ()=> Navigator.of(context).push(new MaterialPageRoute(builder: (BuildContext context)=>new PlaceDetailPage(_currentPlaceId)));
-
-    // TODO: implement build
     return new Scaffold(
         backgroundColor: Colors.black,
         appBar: new AppBar(
@@ -29,7 +26,6 @@ class Placestate extends State<PlacesPage> {
         body:_createContent(),
       );
   }
-final _biggerFont = const TextStyle(fontSize: 18.0);
   Widget _createContent() {
 
     if(_places.length == 0){
