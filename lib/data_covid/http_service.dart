@@ -34,22 +34,13 @@ class HttpServiceDjango {
       "Accept": "application/json",
       "Access-Control_Allow_Origin": "*"
     });
-    print("response" + response.body);
+    print(response);
+    // print(response.body);
     print(response.statusCode);
     if (response.statusCode == 200) {
-      // List<dynamic> body = jsonDecode(response.body);
-
-      // List<DataIndonesia> dataIndonesia =
-      //     body.map((dynamic item) => DataIndonesia.fromJson(item)).toList();
-
-      print("lele");
-      Iterable it = jsonDecode(response.body);
-      List<DataIndonesia> notes =
-          it.map((e) => DataIndonesia.fromJson(e)).toList();
-      print(notes);
-      return notes;
-      // print("dataIndonesia");
-      // return dataIndonesia;
+      String body = jsonDecode(response.body)['last_prov'];
+      print(body);
+      return body;
     } else {
       throw Exception("Cant get Posts.");
     }
