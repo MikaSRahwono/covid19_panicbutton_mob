@@ -1,3 +1,4 @@
+import 'package:covid19_panicbutton_mob/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'model.dart';
@@ -60,6 +61,7 @@ class MotivasiPage extends State<MotivasiApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: MainDrawer(),
         backgroundColor: const Color(0xff181818),
         appBar: AppBar(
           backgroundColor: const Color(0xff181818),
@@ -217,7 +219,9 @@ class _AddMotivationPage extends State<AddMotivationPage> {
             await postJson.postData(message);
           }
           
-          Navigator.pop(context);
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const MotivasiApp()),
+            );
         },
         label: Text("Add motivation",
           style: GoogleFonts.poppins(
