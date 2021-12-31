@@ -43,7 +43,7 @@ class _DataCovidPageState extends State<DataCovidPage> {
   static const purplePBP = Color(0xFF828cf6);
 
   List<DataIndonesia> datas = [];
-  List<DataIndonesia> datasDjango = [];
+  String datasDjango = "";
   HttpService httpService = HttpService();
   HttpServiceDjango httpServiceDjango = HttpServiceDjango();
   var kasus;
@@ -55,20 +55,17 @@ class _DataCovidPageState extends State<DataCovidPage> {
   getIndex0() async {
     print("masook asink");
     datasDjango = await httpServiceDjango.getPosts();
-
-    for (var i = 0; i < 1; i++) {
-      provinsiSaatIni = datasDjango[i];
-    }
-    print(provinsiSaatIni);
+    print("memew");
+    print(datasDjango);
     setState(() {});
-    return provinsiSaatIni;
+    return datasDjango;
   }
 
   @override
   void initState() {
     print("masuk init");
     getIndex0();
-    fetchDataDjango(provinsiSaatIni);
+    fetchDataDjango(datasDjango);
     super.initState();
   }
 
@@ -99,13 +96,24 @@ class _DataCovidPageState extends State<DataCovidPage> {
         body: Center(
             child: Column(children: <Widget>[
           SizedBox(height: 30),
+          Text("COVID di Indonesia",
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              )),
+          DisplayCard(positif: 4262540, sembuh: 4114141, mati: 144088),
+          SizedBox(height: 30),
           Text("Covid di Provinsi mu",
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
               )),
+          Text("Berdasarkan QUIZ",
+              style: TextStyle(
+                fontSize: 20,
+              )),
           SizedBox(height: 30),
-          DisplayCard(positif: kasus, sembuh: sembuh, mati: mati),
+          DisplayCard(positif: 865157, sembuh: 851203, mati: 13605),
           SizedBox(height: 50),
           // Form(
           //     autovalidateMode: _autoValidate,
