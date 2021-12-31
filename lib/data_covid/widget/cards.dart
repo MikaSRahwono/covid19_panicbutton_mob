@@ -1,13 +1,13 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, deprecated_member_use
 
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer';
+// import 'dart:developer';
 
 class DisplayCard extends StatefulWidget {
-  var positif;
-  var sembuh;
-  var mati;
+  final positif;
+  final sembuh;
+  final mati;
 
   DisplayCard({Key? key, this.positif, this.sembuh, this.mati})
       : super(key: key);
@@ -29,7 +29,7 @@ class _DisplayCardState extends State<DisplayCard> {
 }
 
 class CardPositif extends StatefulWidget {
-  var angka;
+  final angka;
 
   CardPositif({Key? key, this.angka}) : super(key: key);
   @override
@@ -80,7 +80,7 @@ class _CardPositifState extends State<CardPositif> {
 }
 
 class CardSembuh extends StatefulWidget {
-  var angka;
+  final angka;
 
   CardSembuh({Key? key, this.angka}) : super(key: key);
   @override
@@ -131,7 +131,7 @@ class _CardSembuhState extends State<CardSembuh> {
 }
 
 class CardMati extends StatefulWidget {
-  var angka;
+  final angka;
 
   CardMati({Key? key, this.angka}) : super(key: key);
   @override

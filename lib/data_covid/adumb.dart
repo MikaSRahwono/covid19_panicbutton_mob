@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, deprecated_member_use
 
-import 'dart:developer';
+// import 'dart:developer';
 import 'package:covid19_panicbutton_mob/data_covid/widget/card_page.dart';
 import 'package:covid19_panicbutton_mob/data_covid/widget/cards.dart';
-import 'package:flutter/cupertino.dart';
+// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'http_service.dart';
 import 'package:covid19_panicbutton_mob/data_covid/models/data.dart';
@@ -35,13 +35,12 @@ class DataCovidPage extends StatefulWidget {
 }
 
 class _DataCovidPageState extends State<DataCovidPage> {
-  final _formKey = GlobalKey<FormState>();
-  var _autoValidate = AutovalidateMode.disabled;
+  // final _formKey = GlobalKey<FormState>();
+  // var _autoValidate = AutovalidateMode.disabled;
   String search = "null";
 
   static const blackPBP = Color(0xFF181818);
   static const purplePBP = Color(0xFF828cf6);
-  static const whitePBP = Color(0xFFF4F6FA);
 
   List<DataIndonesia> datas = [];
   List<DataIndonesia> datasDjango = [];
@@ -144,7 +143,6 @@ class _DataCovidPageState extends State<DataCovidPage> {
           //         onPressed: () {
           //           final isValid = _formKey.currentState!.validate();
           //           if (isValid) {
-          //             // TODO Perform search
           //             if (search == 'jakarta') {
           //               search = "dki jakarta";
           //               print(search);

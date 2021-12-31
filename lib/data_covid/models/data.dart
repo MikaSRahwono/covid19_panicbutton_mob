@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+// import 'package:flutter/foundation.dart';
 
 class DataIndonesia {
   final String provinsi;
@@ -24,15 +24,15 @@ class DataIndonesia {
 }
 
 class DataDjango {
-  final String last_prov;
+  final String lastProv;
 
   DataDjango({
-    required this.last_prov,
+    required this.lastProv,
   });
 
   factory DataDjango.fromJson(Map<String, dynamic> json) {
     return DataDjango(
-      last_prov: json["provinsi"] as String,
+      lastProv: json["provinsi"] as String,
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import './cookie_request.dart';
 import 'package:provider/provider.dart';
 import 'widgets/drawer.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,13 +23,20 @@ class MyApp extends StatelessWidget {
       },
       child: MaterialApp(
         title: 'Covid-19 Panic Button',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
-            primarySwatch: Colors.lightBlue,
-            elevatedButtonTheme: ElevatedButtonThemeData(
-                style: ElevatedButton.styleFrom(
-              primary: Color.fromRGBO(110, 110, 220, 1),
-              fixedSize: const Size(160, 100),
-            ))),
+          // primarySwatch: Colors.lightBlue,
+          primaryColor: Colors.black,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+            primary: Color.fromRGBO(110, 110, 220, 1),
+            fixedSize: const Size(160, 100),
+          )),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Color(0xff181818),
+            elevation: 0,
+          ),
+        ),
         home: const MyHomePage(title: 'Covid-19 Panic Button'),
       ),
     );
@@ -48,7 +56,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title,
+        style: GoogleFonts.poppins(
+            fontSize: 30,
+            fontWeight: FontWeight.w600,
+            color: const Color(0xff828cf6)
+          ),
+        ),
       ),
       drawer: MainDrawer(),
       body: Center(
