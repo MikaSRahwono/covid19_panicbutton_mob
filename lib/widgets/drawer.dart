@@ -6,6 +6,7 @@ import '../screens/logout.dart';
 import '../cookie_request.dart';
 import 'package:provider/provider.dart';
 import '../motivasi/motivasi.dart';
+import '../hospital/hospital_page.dart';
 import '../shop/shop.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -62,6 +63,12 @@ class MainDrawer extends StatelessWidget {
                 Navigator.pop(context);
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => DataCovidPage()));
+              }),
+              SizedBox(height: 24),
+              buildListTile("Cari Rumah Sakit", true, () {
+                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PlacesPage()));
               }),
               const SizedBox(height: 24),
               buildListTile("Motivasi", true, () {
