@@ -4,7 +4,6 @@ import 'package:geolocator/geolocator.dart';
 Future<Position> determinePosition() async {
   bool serviceEnabled;
   LocationPermission permission;
-  Position posisi;
 
   // Test if location services are enabled.
   serviceEnabled = await Geolocator.isLocationServiceEnabled();
